@@ -147,8 +147,8 @@ static unsigned int cursorshape = 2;
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 80;
-static unsigned int rows = 24;
+static unsigned int cols = 120;
+static unsigned int rows = 36;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -173,14 +173,26 @@ static uint forcemousemod = ShiftMask;
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
+ *		Notes For Myself (I have a Logitech G502 Gaming Mouse)
+ * 	Button 1 = Left Click
+ * 	Button 2 = Middle Click
+ * 	Button 3 = Right Click
+ * 	Button 4 = Scroll Up
+ * 	Button 5 = Scroll Down
+ * 	Button 8 = "Go Back" Mouse Button
+ * 	Button 9 = "Go Forward" Mouse Button
  */
+
 static MouseShortcut mshortcuts[] = {
-	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
-	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
-	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+	/* mask                 button		function        argument       release */
+	{ XK_ANY_MOD,           Button2, 	selpaste,       {.i = 0},      1 },
+	{ ShiftMask,            Button4, 	ttysend,        {.s = "\033[5;2~"} },
+	{ XK_ANY_MOD,		Button4, 	kscrollup,	{.i = -1} },	
+	//{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+	{ ShiftMask,            Button5, 	ttysend,        {.s = "\033[6;2~"} },
+	{ XK_ANY_MOD,		Button5,	kscrolldown,	{.i = -1} },
+	//{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+	
 };
 
 /* Internal keyboard shortcuts. */
